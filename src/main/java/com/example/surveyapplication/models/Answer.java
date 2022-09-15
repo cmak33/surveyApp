@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "answers")
@@ -15,7 +16,7 @@ public class Answer{
     private Long id;
     @ManyToOne
     private Question question;
-    @ManyToOne
-    private User user;
+    @ManyToMany
+    private List<User> users;
     private String text;
 }

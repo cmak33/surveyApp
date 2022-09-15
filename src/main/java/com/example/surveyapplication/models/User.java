@@ -26,7 +26,7 @@ public class User implements UserDetails {
     private Set<Role> roles;
     @ManyToMany(mappedBy = "participants")
     private List<Survey> surveys;
-    @OneToMany(mappedBy = "user")
+    @ManyToMany(mappedBy = "users")
     private List<Answer> answers;
 
     @Override
