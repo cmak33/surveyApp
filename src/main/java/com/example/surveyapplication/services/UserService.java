@@ -1,7 +1,9 @@
 package com.example.surveyapplication.services;
 
-import com.example.surveyapplication.models.Role;
-import com.example.surveyapplication.models.User;
+import com.example.surveyapplication.models.entities.Answer;
+import com.example.surveyapplication.models.entities.Question;
+import com.example.surveyapplication.models.entities.Role;
+import com.example.surveyapplication.models.entities.User;
 import com.example.surveyapplication.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;

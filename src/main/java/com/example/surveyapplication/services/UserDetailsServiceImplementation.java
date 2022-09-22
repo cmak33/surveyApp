@@ -1,6 +1,6 @@
 package com.example.surveyapplication.services;
 
-import com.example.surveyapplication.models.User;
+import com.example.surveyapplication.models.entities.User;
 import com.example.surveyapplication.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

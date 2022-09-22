@@ -1,6 +1,6 @@
 package com.example.surveyapplication.controllers.authorisation;
 
-import com.example.surveyapplication.models.User;
+import com.example.surveyapplication.models.entities.User;
 import com.example.surveyapplication.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

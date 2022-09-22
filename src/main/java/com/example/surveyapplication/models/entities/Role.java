@@ -1,4 +1,4 @@
-package com.example.surveyapplication.models;
+package com.example.surveyapplication.models.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 
