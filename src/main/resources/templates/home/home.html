@@ -6,5 +6,8 @@
 </head>
 <body>
 <div th:text="${user.getUsername()}"></div>
+<a th:href="@{/survey/list}">survey list</a>
+<a th:href="@{/home/completedSurveys}">completed surveys</a>
+<a th:href="@{/logout}">logout</a>
 </body>
 </html>
