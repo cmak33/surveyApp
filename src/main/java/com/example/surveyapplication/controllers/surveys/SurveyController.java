@@ -36,9 +36,7 @@ public class SurveyController {
         this.surveySessionAttributes = surveySessionAttributes;
     }
 
-
     @GetMapping("")
-    @Transactional
     public String survey(Model model){
         if(surveySessionAttributes.getCurrentSurvey() != null){
             model.addAttribute("question",surveySessionAttributes.getCurrentQuestion());
@@ -73,7 +71,6 @@ public class SurveyController {
     }
 
     @PostMapping("/nextQuestion")
-    @Transactional
     public String nextQuestion(@Valid Question question, Model model){
         if(surveySessionAttributes.getCurrentSurvey()==null || question.getAnswers().isEmpty()){
             return "redirect:/home";
