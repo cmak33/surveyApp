@@ -1,5 +1,6 @@
 package com.example.surveyapplication.services;
 
+import com.example.surveyapplication.models.dtos.SurveyDTO;
 import com.example.surveyapplication.models.entities.Answer;
 import com.example.surveyapplication.models.entities.Question;
 import com.example.surveyapplication.models.entities.Role;
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -42,30 +44,18 @@ public class UserService {
         user.setPassword(encodedPassword);
     }
 
-    public void updateUser(User user){
-        userRepository.save(user);
-    }
 
     public Optional<Answer> receiveCurrentUserAnswerToQuestion(Question question){
         User user = receiveCurrentUser();
         return user.getAnswers().stream().filter(answer->question.getAnswers().stream().anyMatch(x->x.getId().equals(answer.getId()))).findFirst();
     }
 
-    public Optional<User> findUserById(Long id){
-        return userRepository.findById(id);
+    public List<SurveyDTO> receiveCurrentUserSurveysDTO(){
+        return receiveCurrentUser().getSurveys().stream().map(SurveyDTO::new).toList();
     }
 
     public User receiveCurrentUser(){
         return (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    }
-
-    public Long receiveCurrentUserId(){
-        return receiveCurrentUser().getId();
-    }
-
-
-    public boolean isCurrentUser(Long id){
-        return receiveCurrentUserId().equals(id);
     }
 
     public boolean isUsernameUnique(String username){
