@@ -26,4 +26,8 @@ public class SurveySessionAttributes {
     public void setToDefaultValue(){
         currentSurvey = null;
     }
+
+    public boolean isLastQuestion(){
+        return currentSurvey.getQuestionList().size()-1==questionIndex;
+    }
 }

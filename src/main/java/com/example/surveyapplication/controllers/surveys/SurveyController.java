@@ -79,7 +79,7 @@ public class SurveyController {
             return "redirect:/home";
         } else {
             answerService.addUserToAnswer(question.getAnswers().get(0));
-            if(isLastQuestionOnCurrentSurvey()){
+            if(surveySessionAttributes.isLastQuestion()){
                 model.addAttribute("survey",surveySessionAttributes.getCurrentSurvey());
                 surveySessionAttributes.setToDefaultValue();
                 return "survey/surveyFinished";
@@ -88,10 +88,6 @@ public class SurveyController {
                 return "redirect:/survey";
             }
         }
-    }
-
-    private boolean isLastQuestionOnCurrentSurvey(){
-        return surveySessionAttributes.getCurrentSurvey().getQuestionList().size()-1==surveySessionAttributes.getQuestionIndex();
     }
 
     @PostMapping("/previousQuestion")
@@ -121,6 +117,4 @@ public class SurveyController {
             return "survey/surveyStatistic";
         }).orElse("redirect:/home");
     }
-
-
 }
