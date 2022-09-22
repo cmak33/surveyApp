@@ -42,6 +42,15 @@ public class UserService {
         user.setPassword(encodedPassword);
     }
 
+    public void updateUser(User user){
+        userRepository.save(user);
+    }
+
+    public Optional<Answer> receiveCurrentUserAnswerToQuestion(Question question){
+        User user = receiveCurrentUser();
+        return user.getAnswers().stream().filter(answer->question.getAnswers().stream().anyMatch(x->x.getId().equals(answer.getId()))).findFirst();
+    }
+
     public Optional<User> findUserById(Long id){
         return userRepository.findById(id);
     }
